@@ -1,0 +1,38 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Node / Next
+node_modules/
+.next/
+
+# Secrets
+.env
+.env.*
+!.env.example
+frontend/.env.local
+backend/.env
+
+# Runtime data
+uploads/
+*.log
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+# Deployment tooling
+.vercel/
+*.pem
+*.key
+
+# Keep safe examples
+!backend/.env.production.example
+!frontend/.env.production.example
+
+# Migration secrets
+scripts/.env.migration
+!scripts/.env.migration.example

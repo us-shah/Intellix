@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  ::selection {
+    background: #2563eb;
+    color: #f9fafb;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: #0b1120;
+    color: #f9fafb;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  :focus-visible {
+    outline: 2px solid #06b6d4;
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .glass {
+    background: rgba(255,255,255,.03);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,.08);
+  }
+
+  .glass-strong {
+    background: rgba(255,255,255,.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,.1);
+  }
+
+  .gradient-text {
+    background: linear-gradient(
+      90deg,
+      #60a5fa,
+      #22d3ee,
+      #a78bfa
+    );
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  .container-px {
+    @apply px-6 lg:px-10;
+  }
+
+  .section-y {
+    @apply py-20;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0b1120;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
+}
