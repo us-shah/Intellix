@@ -1,0 +1,13 @@
+"use client";
+import { useEffect, useState } from "react";
+import { createTask, updateTask } from "@/lib/task";
+import type { Task } from "@/types/task";
+
+export default function TaskModal({ open, task, onClose, onSuccess }: { open: boolean; task?: Task | null; onClose: () => void; onSuccess: () => void | Promise<void> }) {
+  const [loading, setLoading] = useState(false);
+  const [form, setForm] = useState({ Title: "", Description: "", AssignedTo: 1, Priority: "Medium", Status: "Pending", DueDate: "" });
+  useEffect(() => { if (task) setForm({ Title: task.Title, Description: task.Description || "", AssignedTo: task.AssignedTo, Priority: task.Priority, Status: task.Status, DueDate: task.DueDate?.slice(0, 16) || "" }); }, [task]);
+  if (!open) return null;
+  async function submit(e: React.FormEvent) { e.preventDefault(); setLoading(true); try { const payload = { ...form, DueDate: new Date(form.DueDate).toISOString() }; task ? await updateTask(task.TaskID, payload) : await createTask(payload); await onSuccess(); onClose(); } finally { setLoading(false); } }
+  return <div className="fixed inset-0 z-50 grid place-items-center bg-black/60 p-4"><form onSubmit={submit} className="w-full max-w-xl space-y-4 rounded-xl bg-slate-900 p-6 text-white"><h2 className="text-xl font-bold">{task ? "Edit Task" : "Add Task"}</h2><input required className="w-full rounded bg-slate-800 p-3" placeholder="Title" value={form.Title} onChange={e=>setForm({...form,Title:e.target.value})}/><textarea className="w-full rounded bg-slate-800 p-3" placeholder="Description" value={form.Description} onChange={e=>setForm({...form,Description:e.target.value})}/><input required type="number" className="w-full rounded bg-slate-800 p-3" value={form.AssignedTo} onChange={e=>setForm({...form,AssignedTo:Number(e.target.value)})}/><div className="grid grid-cols-2 gap-3"><select className="rounded bg-slate-800 p-3" value={form.Priority} onChange={e=>setForm({...form,Priority:e.target.value})}><option>Low</option><option>Medium</option><option>High</option></select><select className="rounded bg-slate-800 p-3" value={form.Status} onChange={e=>setForm({...form,Status:e.target.value})}><option>Pending</option><option>In Progress</option><option>Completed</option></select></div><input required type="datetime-local" className="w-full rounded bg-slate-800 p-3" value={form.DueDate} onChange={e=>setForm({...form,DueDate:e.target.value})}/><div className="flex justify-end gap-3"><button type="button" onClick={onClose}>Cancel</button><button disabled={loading} className="rounded bg-cyan-600 px-4 py-2">{loading ? "Saving..." : "Save"}</button></div></form></div>;
+}

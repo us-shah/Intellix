@@ -1,0 +1,3 @@
+import type{Metadata}from"next";import{PageHero}from"@/components/ui/PageHero";import PublicAcademyCatalog from"@/components/lms/PublicAcademyCatalog";
+export const metadata:Metadata={title:"Intellix Academy",description:"Published Intellix Academy courses in software, AI, data and cloud engineering."};
+export default function AcademyPage(){return <><PageHero eyebrow="Intellix Academy" title="Learn from engineers who ship production systems" description="Published courses are managed directly from the Intellix LMS and appear here automatically."/><section className="section-y bg-slate-50"><div className="container-px mx-auto max-w-6xl"><PublicAcademyCatalog/></div></section></>}

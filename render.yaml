@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: intellix-api
+    runtime: docker
+    rootDir: backend
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ALGORITHM
+        value: HS256
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: "60"
+      - key: RESET_TOKEN_EXPIRE_MINUTES
+        value: "30"
+      - key: FRONTEND_URL
+        sync: false
+      - key: CORS_ORIGINS
+        value: ""
+      - key: ALLOW_VERCEL_PREVIEWS
+        value: "false"
+      - key: DEBUG
+        value: "false"
+      - key: LLM_API_KEY
+        sync: false
+      - key: LLM_BASE_URL
+        value: https://api.openai.com/v1
+      - key: LLM_MODEL
+        value: gpt-4.1-mini

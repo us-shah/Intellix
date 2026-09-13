@@ -1,0 +1,3 @@
+"use client";
+import { useEffect, useState } from "react";
+export default function ProfilePage(){ const [user,setUser]=useState<any>(null); useEffect(()=>{try{const raw=localStorage.getItem("user"); if(raw)setUser(JSON.parse(raw));}catch{}},[]); return <main className="p-8 text-white"><h1 className="text-3xl font-bold">Profile</h1>{user?<div className="mt-6 max-w-xl rounded-xl border border-slate-700 bg-slate-900 p-6"><p className="text-xl font-semibold">{user.FullName}</p><p className="mt-2 text-slate-300">{user.Email}</p><p className="mt-1 text-slate-400">{user.Phone || "No phone number"}</p></div>:<p className="mt-6 text-slate-300">Profile API is not implemented yet. Log in again after the /auth/me endpoint is added.</p>}</main>}

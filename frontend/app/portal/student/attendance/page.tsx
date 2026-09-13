@@ -1,0 +1,5 @@
+"use client";
+import { useEffect, useState } from "react";
+import { CalendarCheck, Info } from "lucide-react";
+import api from "@/lib/api";
+export default function AttendancePage(){const[user,setUser]=useState<any>(null);useEffect(()=>{void api.get("/portal/me").then(r=>setUser(r.data)).catch(()=>{})},[]);return <main className="min-h-screen bg-slate-100 p-6 text-slate-900"><div className="mx-auto max-w-5xl space-y-6"><div className="rounded-3xl bg-gradient-to-r from-blue-700 to-indigo-800 p-7 text-white"><CalendarCheck className="mb-3"/><h1 className="text-3xl font-black">Attendance</h1><p className="mt-2 text-blue-100">Attendance records for {user?.FullName||"your student account"}.</p></div><div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm"><div className="flex gap-3"><Info className="mt-0.5 text-blue-700"/><div><h2 className="font-bold text-slate-950">No attendance records yet</h2><p className="mt-1 text-slate-600">When your instructor records class attendance, your history and attendance percentage will appear here.</p></div></div></div></div></main>}

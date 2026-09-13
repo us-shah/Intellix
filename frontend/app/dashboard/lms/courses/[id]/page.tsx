@@ -1,0 +1,2 @@
+"use client";import{useParams}from"next/navigation";import LmsShell from"@/components/lms/LmsShell";import{PageTitle}from"@/components/lms/Ui";import CourseEditor from"@/components/lms/CourseEditor";
+export default function Page(){const id=Number(useParams().id);return <LmsShell mode="admin"><PageTitle title="Edit course" description="Update course details, publishing state and instructor assignment."/><CourseEditor courseId={id}/></LmsShell>}

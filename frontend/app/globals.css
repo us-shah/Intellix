@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  ::selection { background:#2563eb; color:#fff; }
+  html { scroll-behavior:smooth; }
+  body {
+    margin:0;
+    padding:0;
+    background:#050816;
+    color:#e2e8f0;
+    font-family:Inter,"Segoe UI",Arial,sans-serif;
+    text-rendering:optimizeLegibility;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4,h5,h6 { font-family:Manrope,Inter,"Segoe UI",Arial,sans-serif; letter-spacing:-.025em; }
+  *,*::before,*::after { box-sizing:border-box; }
+  :focus-visible { outline:2px solid #60a5fa; outline-offset:3px; }
+}
+
+@layer components {
+  .container-px { @apply px-5 sm:px-6 lg:px-10; }
+  .section-y { @apply py-16 sm:py-20 lg:py-24; }
+  .eyebrow { @apply text-xs font-extrabold uppercase tracking-[0.18em] text-blue-300; }
+  .dark-panel { @apply border border-white/10 bg-slate-900/70 backdrop-blur-xl; }
+  .dark-input { @apply h-12 w-full rounded-xl border border-slate-700 bg-slate-950/70 text-base font-medium text-white outline-none placeholder:text-slate-500 transition focus:border-blue-500 focus:ring-4 focus:ring-blue-500/15 disabled:cursor-not-allowed disabled:opacity-60; }
+  .dark-label { @apply mb-2 block text-sm font-bold text-slate-200; }
+  .auth-link { @apply font-bold text-blue-300 transition hover:text-cyan-300 hover:underline; }
+}
+
+::-webkit-scrollbar { width:10px; }
+::-webkit-scrollbar-track { background:#050816; }
+::-webkit-scrollbar-thumb { background:#334155; border-radius:20px; }
+::-webkit-scrollbar-thumb:hover { background:#2563eb; }

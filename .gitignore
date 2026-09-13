@@ -1,0 +1,38 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Node / Next
+node_modules/
+frontend/node_modules/
+.next/
+frontend/.next/
+*.tsbuildinfo
+
+# Secrets
+.env
+.env.*
+!.env.example
+!backend/.env.example
+!backend/.env.production.example
+!frontend/.env.local.example
+!frontend/.env.production.example
+backend/.env
+frontend/.env.local
+
+# Runtime data
+uploads/
+*.log
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Deployment tooling
+.vercel/
+*.pem
+*.key
